@@ -22,6 +22,7 @@ APPNAME = 'signal'
 
 import os
 import shutil
+import subprocess
 
 #------------------------------------------------------------------------
 # Don't require a manual ./waf configure before build
@@ -105,8 +106,16 @@ def build(bld):
 	# shared object, used when generating the link paths of binaries
 	# compiled against this lib.
 	#------------------------------------------------------------------------
+
+	pycxxflags = subprocess.Popen([ "python-config", "--cflags"  ], stdout = subprocess.PIPE).communicate()[0]
+	pyldflags = subprocess.Popen([ "python-config", "--ldflags", "--libs" ], stdout = subprocess.PIPE).communicate()[0]
+	bld.env.CXXFLAGS += pycxxflags.split()
+	bld.env.CXXFLAGS += [ "-I", "/usr/local/include/pybind11" ]
+	bld.env.LDFLAGS += pyldflags.split()
+
+	source_files = bld.path.ant_glob('lib/vamp-hostsdk/*.cpp') + bld.path.ant_glob('lib/json11/json11.cpp') + bld.path.ant_glob('signal/**/*.cpp')
 	bld.shlib(
-		source = bld.path.ant_glob('lib/vamp-hostsdk/*.cpp') + bld.path.ant_glob('lib/json11/json11.cpp') + bld.path.ant_glob('signal/**/*.cpp'),
+		source = source_files,
 		target = 'signal',
 		vnum = VERSION,
 		use = libraries,
