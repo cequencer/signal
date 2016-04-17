@@ -52,6 +52,10 @@ void init_libsignal(py::module &m)
 		.def(py::init<float>());
 	py::class_<NodeRef>(m, "NodeRef")
 		.def(py::init<>());
+	py::class_<Sampler, NodeRefT<Node>>(m, "Sampler", py::base<Node>())
+		.def(py::init<Buffer *>());
+	// py::class_<std::shared_ptr <Buffer>>(m, "Buffer")
+	//	.def(py::init<const char *>());
 }
 
 PYBIND11_PLUGIN(libsignal) {
