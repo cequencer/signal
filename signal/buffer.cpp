@@ -10,6 +10,10 @@
 namespace libsignal
 {
 
+Buffer::Buffer()
+{
+}
+
 Buffer::Buffer(int num_channels, int num_frames)
 {
 	this->num_channels = num_channels;

@@ -33,6 +33,7 @@ namespace libsignal
 	public:
 		Buffer(int num_channels, int num_frames);
 		Buffer(const char *filename);
+		Buffer();
 
 		void open(const char *filename);
 
