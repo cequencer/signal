@@ -1,6 +1,8 @@
 #include "structure.h"
 
 #include "core.h"
+#include "registry.h"
+#include "synthregistry.h"
 #include "gen/constant.h"
 #include "json11/json11.hpp"
 
@@ -125,6 +127,11 @@ namespace libsignal
 		 * construction)
 		 *-----------------------------------------------------------------------*/
 		this->parsed = true;
+	}
+
+	void Structure::store()
+	{
+		SynthRegistry::global()->add(this->name, this);
 	}
 
 	void Structure::add_node_def(NodeDefinition def)

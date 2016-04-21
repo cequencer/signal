@@ -6,6 +6,7 @@
 
 **New features:**
 
+- SynthRegistry [\#51](https://github.com/ideoforms/signal/issues/51)
 - Node: MoogVCF [\#43](https://github.com/ideoforms/signal/issues/43)
 - Node: Linear scale [\#41](https://github.com/ideoforms/signal/issues/41)
 - Node: Support for constant property values [\#39](https://github.com/ideoforms/signal/issues/39)
@@ -17,6 +18,7 @@
 - Node: Saw [\#25](https://github.com/ideoforms/signal/issues/25)
 - Node: EQ [\#19](https://github.com/ideoforms/signal/issues/19)
 - JSON parsing to load serialised synth graphs [\#17](https://github.com/ideoforms/signal/issues/17)
+- SynthDef: Support for named inputs and outputs [\#4](https://github.com/ideoforms/signal/issues/4)
 - Support for non-44k samplerates [\#2](https://github.com/ideoforms/signal/issues/2)
 - Buffer recording [\#1](https://github.com/ideoforms/signal/issues/1)
 
@@ -28,6 +30,7 @@
 
 **Closed issues:**
 
+- Further examples [\#48](https://github.com/ideoforms/signal/issues/48)
 - Update basic nodes to handle multi-channel inputs [\#24](https://github.com/ideoforms/signal/issues/24)
 
 ## [v0.1.1](https://github.com/ideoforms/signal/tree/v0.1.1) (2016-03-23)

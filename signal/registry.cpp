@@ -1,4 +1,6 @@
 #include "registry.h"
+#include "structure.h"
+#include "synth.h"
 
 #include <stdlib.h>
 
@@ -28,6 +30,5 @@ Node *NodeRegistry::create(std::string name)
 	Node *object = this->classes[name]();
 	return object;
 }
-
 
 }

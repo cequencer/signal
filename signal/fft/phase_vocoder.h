@@ -8,12 +8,11 @@ namespace libsignal
 	class FFTPhaseVocoder : public FFTOpNode
 	{
 		public:
-			FFTPhaseVocoder(NodeRef input = 0) :
+			FFTPhaseVocoder(NodeRef input = nullptr) :
 				FFTOpNode(input)
 			{
 				this->name = "fft_phase_vocoder";
 
-				printf("making phase vocoder, %d bins\n", this->num_bins);
 				this->phase_buffer     = (sample *) calloc(this->num_bins, sizeof(sample));
 				this->phase_deriv      = (sample *) calloc(this->num_bins, sizeof(sample));
 				this->magnitude_buffer = (sample *) calloc(this->num_bins, sizeof(sample));
@@ -76,12 +75,9 @@ namespace libsignal
 					FFTNode *fftin = (FFTNode *) input.get();
 					for (int frame = 0; frame < this->num_bins; frame++)
 					{
-						if (random_uniform() < 1.0)
-						{
-							this->phase_deriv[frame]      = fftin->phases[last_hop][frame] - fftin->phases[last_hop - 1][frame];
-							this->phase_buffer[frame]     = fftin->phases[last_hop][frame];
-							this->magnitude_buffer[frame] = fftin->magnitudes[last_hop][frame];
-						}
+						this->phase_deriv[frame]      = fftin->phases[last_hop][frame] - fftin->phases[last_hop - 1][frame];
+						this->phase_buffer[frame]     = fftin->phases[last_hop][frame];
+						this->magnitude_buffer[frame] = fftin->magnitudes[last_hop][frame];
 					}
 				}
 			}

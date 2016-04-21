@@ -1,3 +1,5 @@
+#pragma once
+
 #include "node.h"
 #include "nodedef.h"
 
@@ -11,7 +13,7 @@ namespace libsignal
 			/*----------------------------------------------------------------------------------
 			 * Methods for creating a Structure from live Node objects.
 			 *---------------------------------------------------------------------------------*/
-			NodeRef add_input(std::string name, sample default_value);
+			NodeRef add_input(std::string name, sample default_value = 0);
 			NodeRef add_node(NodeRef node);
 			void set_output(const NodeRef &out);
 
@@ -33,10 +35,16 @@ namespace libsignal
 			void load(std::string filename);
 
 			/*----------------------------------------------------------------------------------
-			 * 
+			 * Parse a template from live Node objects to create a network of NodeDefs
 			 *---------------------------------------------------------------------------------*/
 			void parse();
 			NodeDefinition get_root();
+
+			/*----------------------------------------------------------------------------------
+			 * Store a Structure to the global SynthRegistry so that it can be
+			 * instantiated by name.
+			 *---------------------------------------------------------------------------------*/
+			void store();
 
 			/**----------------------------------------------------------------------------------
 			 * Returns true if this Structure is ready to be played.
